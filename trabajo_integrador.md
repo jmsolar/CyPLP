@@ -795,22 +795,22 @@ catchStatement código que maneja la excepción
 
 #### Processing
 
-**  ¿Considera que la sintaxis del lenguaje permite mantener un buen grado de legibilidad de código?
-**  ¿Qué ventajas/desventajas puede nombrar sobre la utilización de variables globales dentro de su código fuente?
-**  ¿Los tipos de datos ofrecidos en el lenguaje pueden ser extendidos fácilmente y así crear nuevos?
-**  ¿Qué dificultades o desventajas frente a otros lenguajes encuentra al momento de realizar pasaje de parámetros?
-**  ¿Considera como concepto de seguridad el hecho de que una variable conozca su tipo de dato antes de la ejecución del programa?
+* ¿Considera que la sintaxis del lenguaje permite mantener un buen grado de legibilidad de código?
+* ¿Qué ventajas/desventajas puede nombrar sobre la utilización de variables globales dentro de su código fuente?
+* ¿Los tipos de datos ofrecidos en el lenguaje pueden ser extendidos fácilmente y así crear nuevos?
+* ¿Qué dificultades o desventajas frente a otros lenguajes encuentra al momento de realizar pasaje de parámetros?
+* ¿Considera como concepto de seguridad el hecho de que una variable conozca su tipo de dato antes de la ejecución del programa?
 
 > **Sin respuesta**
 
 #### Python
 
-**  ¿Que ventajas/desventajas tiene el lenguaje al ser interpretado contra los lenguajes compilados?
-**  ¿Al ser un lenguaje de tipado dinámico el código es menos legible?
-**  ¿Encuentra alguna dificultad o desventaja con que sea fuertemente tipado?
-**  ¿Cuando empezó a trabajar en Python que fue lo que más le intereso del lenguaje?
-**  A la hora de encarar un nuevo proyecto con más personas de distintos niveles (desde principiantes a avanzados) ¿elegiría éste u otro lenguaje, ¿porque?
-**  ¿Considera una desventaja que el lenguaje sea multiparadigma?
+* ¿Que ventajas/desventajas tiene el lenguaje al ser interpretado contra los lenguajes compilados?
+* ¿Al ser un lenguaje de tipado dinámico el código es menos legible?
+* ¿Encuentra alguna dificultad o desventaja con que sea fuertemente tipado?
+* ¿Cuando empezó a trabajar en Python que fue lo que más le intereso del lenguaje?
+* A la hora de encarar un nuevo proyecto con más personas de distintos niveles (desde principiantes a avanzados) ¿elegiría éste u otro lenguaje, ¿porque?
+* ¿Considera una desventaja que el lenguaje sea multiparadigma?
 
 > **Sin respuesta**
 
