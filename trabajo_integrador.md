@@ -199,17 +199,14 @@ Subclases de la clase abstracta proveen la implementación de los métodos abstr
 
 #### Ortogonalidad
 
-Se refiere al significado de las palabras reservadas o simbolos.
-Si una palabra reservada siempre tiene el mismo significado independientemente del
-contexto en que se use el lenguaje tiene una mayor ortogonalidad.
-Un ejemplo es el signicado de "+" si siempre representa la suma aritimetica es ortogonal,
-pero si representa a la suma para variables numéricas y concatenación para strings entonces
-es menos ortogonal.
-Un lenguaje con caracteristicas ortogonales, nos da la facilidad de aprenderlo mas rapido, ya que existen menos excepciones y casos
-especiales para tener en cuenta
-* Ortogonalidad en Python.
-**Python** y **Processing** provee una gran cantidad de palabras reservadas que nos permite utilizarlas en cualquier momento
-y siempre tener el mismo resultado, aunque posee algunas excepciones como en caso mencionado con el caracter "+"
+* **Python**
+
+Cuando definimos los métodos que va a tener una determinada clase o tipo de dato es importante tener en cuenta que el listado de métodos debe ser lo más conciso posible, es decir, si una clase tiene algunos métodos básicos que pueden combinarse para obtener distintos resultados, no queremos implementar todas posibles combinaciones de llamadas a los métodos básicos, sino sólo los básicos y aquellas combinaciones que sean muy frecuentes, o en las que tenerlas como un método aparte implique una ventaja significativa en cuanto al tiempo de ejecución de la operación.
+Entonces si una construcción o método funciona con una estructura de datos, debe funcionar de modo similar con aquellas otras que guardan alguna semejanza (si cierta función o método calcula la longitud de una cadena, por ejemplo, debería calcular también la longitud de una lista, pues ambas son secuencias).
+
+* **Processing**
+
+En Processing, tendría que evaluar, por ejemplo, si hay una combinación de palabras clave/construcciones que podrían afectarse entre sí cuando se usan simultáneamente en un identificador. Por ejemplo, al aplicar public y static a un método, no interfieren entre sí, por lo que estos dos son ortogonales (sin efectos secundarios además de lo que la palabra clave pretende hacer).
 
 **B. Defina y compare diferentes aspectos de la sintáxis que Ud. considere. Ejemplifique.**
 
@@ -446,7 +443,24 @@ pero requiere que el valor a evaluar esté entre paréntesis.
 
 **D. Defina una porción de código donde pueda apreciarse las características más relevantes de las variables en cuanto a sus atributos. Elija alguno de los lenguajes asignados que presente mayores posibilidades para mostrar estas características y desarrolle el ejercicio de la misma forma que se realiza en la práctica. Luego, si es necesario realice las explicaciones que permitan una mayor comprensión del ejercicio.**
 
-COMPLETARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+```python
+SUPER_ALCANCE = 'alcance estatico'
+
+def suma(num1, num2):
+  resultado = num1 + num2
+  print(SUPER_ALCANCE)
+  return resultado
+
+num1 = 3
+num2 = 5
+sum = suma(num2, num1)
+```
+
+Tomando la linea "num2 = 5" definimos:
+* Identificador: "num2"
+* Alcance: estatico, se puede usar el valor de la variable *sum* en cualquier linea posterior a su asignación.
+* Tipo: numérico, al ser un lenguaje de tipado dinamico los tipos se definen durante su ejecución
+* Valor: 5
 
 **E. Mencione y compare entre ambos lenguajes los diferentes tipos de parámetros y características de su implementación**
 
@@ -801,7 +815,7 @@ catchStatement código que maneja la excepción
 * ¿Qué dificultades o desventajas frente a otros lenguajes encuentra al momento de realizar pasaje de parámetros?
 * ¿Considera como concepto de seguridad el hecho de que una variable conozca su tipo de dato antes de la ejecución del programa?
 
-> **Sin respuesta**
+> **Sin respuesta, contacto: matias.jl@gmail.com**
 
 #### Python
 
@@ -812,8 +826,11 @@ catchStatement código que maneja la excepción
 * A la hora de encarar un nuevo proyecto con más personas de distintos niveles (desde principiantes a avanzados) ¿elegiría éste u otro lenguaje, ¿porque?
 * ¿Considera una desventaja que el lenguaje sea multiparadigma?
 
-> **Sin respuesta**
+> **Sin respuesta, contacto: te.seoane@gmail.com**
 
 **I. Conclusión sobre el trabajo: Realice una conclusión mencionando los aportes que le generó la realización del trabajo en comparación con sus conocimientos previos de los lenguajes asignados**
 
-COMPLETARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+Al realizar ambos trabajos provistos por la cátedra, llegamos a la conclusión de que ambos  nos han enseñado a entender los conceptos básicos de cómo analizar el funcionamiento y  características de un lenguaje de programación. Sin embargo creemos que el aprendizaje profundo es obtenido con el tiempo, en base a experiencia y sobre todo de la cantidad de código escrito. A medida que nos enfrentando a diferentes problemas vamos conociendo mejor lenguaje y podemos tomar cada característica para aplicarla de la mejor forma.
+Además cada aspecto que brinde es importante a la hora de seleccionar un lenguaje para llevar a cabo un proyecto de principio a fin, por esta razón el aprendizaje en cuanto, por ejemplo, a tipos de datos, restricciones en las operaciones por cada tipo, modos de ejecución (compilación o interpretación), curva de aprendizaje, portabilidad, documentación oficial y foros; estos aspectos y muchos más nos presentan mayor base de conocimiento para realizar una elección más óptima y ajustada a la necesidad inicial: poder desarrollar software y dar solución a un problema mediante esta herramienta.
+Podemos concluir entonces que la elección de un buen lenguaje basados en el conocimiento del mismo ya sea por investigación o experiencia previa nos garantiza, en cierta forma, gran parte del éxito del producto final y en consecuencia un cliente satisfecho.
+
