@@ -446,3 +446,355 @@ pero requiere que el valor a evaluar esté entre paréntesis.
 
 **D. Defina una porción de código donde pueda apreciarse las características más relevantes de las variables en cuanto a sus atributos. Elija alguno de los lenguajes asignados que presente mayores posibilidades para mostrar estas características y desarrolle el ejercicio de la misma forma que se realiza en la práctica. Luego, si es necesario realice las explicaciones que permitan una mayor comprensión del ejercicio.**
 
+COMPLETARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+
+**E. Mencione y compare entre ambos lenguajes los diferentes tipos de parámetros y características de su implementación**
+
+#### Python
+
+Por omisión los parámetros se pasan de forma posicional aunque también se pueden usar parámetros nombrados.
+Son objetos los que se pasan como parámetro, los objetos simples, "inmutables", se pasan por valor y los objetos complejos, "mutables", por referencia.
+
+#### Pasaje por valor
+
+Cuando se pasa un objeto simple o inmutable, se pasa una copia del parámetro actual, los cambios que se hagan dentro de la función no afecta a la copia original. Ejemplo:
+
+```python
+def doble(numero):
+    numero *= 2
+    print(numero)
+
+i=1
+doble(i)
+print(i)
+```
+
+> **Salida: 2 1**
+
+El tipo del parámetro formal no se declara, se confía en que el objeto que se pasa a la función va a poder responder a los métodos que se especifican dentro de la función.
+
+#### Pasaje por referencia
+
+Cuando se pasa un objeto complejo o mutable, se envía por referencia el objeto que está en el ambiente del llamador, los cambios dentro de la función se hacen sobre el mismo objeto. Ejemplo:
+
+```python
+def doble(numeros):
+    for i,n in enumerate(numeros):
+        numeros[i] *= 2
+    print(numeros)
+        
+numeros=[1,2,3]
+doble(numeros)
+print(numeros)
+```
+
+> **Salida: [2,4,6] [2,4,6]**
+
+#### Pasaje nombrados
+
+```python
+def saludo(mensaje, nombre):
+     print(mensaje + " " + nombre)
+   
+saludo(nombre="Juan", mensaje="Hola")
+```
+
+> **Salida: Hola Juan**
+
+#### Pasaje por omisión
+
+En la definición de la función, primero deben declararse los parámetros comunes, y luego los parámetros por omisión.
+
+```python
+def saludo(mensaje, nombre="Juan"):
+     print(mensaje + " " + nombre)
+   
+saludo("hola")
+```
+
+> **Salida: Hola Juan**
+
+#### Processing
+
+Tiene las mismas limitaciones que tiene Java al respecto del pasaje de parámetros. El pasaje de parámetros se hace de forma posicional. No existen los parámetros nombrados o por omisión.
+La declaración de los parámetros formales requieren que se especifique el tipo. Los tipos de los parámetros actuales tienen que coincidir con los tipos de los parámetros formales, de lo contrario da error.
+Además el único mecanismo contemplado es el paso por copia de valor pero como las variables de tipos no primitivos son todas referencias a variables anónimas en la heap, el paso por valor de una de estas variables constituye en realidad un paso por referencia de la variable.
+
+* Parámetro de tipo primitivo, el pasaje es por valor
+```processing
+void tripleDiameter(float diam) {
+  diam *=3;
+}
+
+void setup(){
+size(300, 300);
+background(0, 200, 0);
+int circleX = 50;
+int circleY = 50;
+int diameter = 50;
+fill(255, 0, 0);
+ellipse(circleX, circleY, diameter, diameter);
+tripleDiameter(diameter);
+ellipse(circleX+100, circleY+100, diameter, diameter);
+}
+```
+
+* Parámetro de tipo no primitivo (arreglo), el pasaje es por referencia
+```processing
+void tripleDiameter(float args[]) {
+  args[2] *=3;
+}
+
+void setup(){
+size(300, 300);
+
+background(0, 200, 0);
+float[] params= new float[3];
+params[0] = 50;
+params[1] = 50;
+params[2] = 50;
+fill(255, 0, 0);
+ellipse(params[0], params[1], params[2], params[2]);
+tripleDiameter(params);
+ellipse(params[0]+100, params[1]+100, params[2], params[2]);
+}
+```
+
+**F. Analice y explique la fortaleza del sistema de tipos de cada uno de los lenguajes asignados**
+
+#### Python
+
+Al almacenar datos en una variable lo que podemos hacer con ella dependerá del tipo de dato al cual pertenezca. Ejemplificando esto:
+
+```python
+10 + 25
+"10" + "25"
+```
+
+> **Salida: 35 '1025'**
+
+Podemos notar que la diferencia radica en la utilización de las comillas, es decir, el lenguaje detecta esto y procesa los datos de forma tal que las operaciones que pueden realizar son dependientes de este símbolo. 
+Conocer los tipos de datos que provee cada lenguaje entonces es útil para conocer las diferentes operaciones que podamos realizar con ellos.
+Python es un lenguaje de tipado dinámico (a cada variable o identificador se le asocia o liga en tiempo de ejecución un tipo de dato) y fuerte (cada tipo define un conjunto restrictivo de operaciones posibles que puede realizarse con ellos). En este último caso en Python no es necesario declarar el tipo de dato de forma explícita sino que se infiera dentro del contexto.
+Siendo fuertemente tipado permite reducir los errores generados por parte del desarrollador, por ejemplo al querer obtener por consola el resultado de una operación aritmética sin convertir este valor a una cadena de texto se producirá un error en compilación. Por otra parte al ser dinámico no solo permite escribir programas a mayor velocidad (dado que no es necesario declarar tipos, tanto sea en las variables como en las firmas de métodos) sino que es posible comprobar en tiempo de ejecución el tipo de dato de la línea en ejecución y así “asociar” a ella el conjunto de operaciones posibles. 
+Respecto a la conversión de datos en tanto que el programa funcione de forma correcta es necesario realizarlo de manera explícita por el desarrollador ya que de otra forma esto producirá un error y posteriormente la finalización del programa si es que no se cuenta con ningún manejador de excepciones, el ejemplo clásico de esta situación es la salida por consola de un valor numérico sin antes convertirlo en una cadena de caracteres.
+Los tipos básico del lenguaje en sus distintas versiones (2.x o 3.x) son:
+
+#### Estándar
+*  Booleano
+*    Numéricos
+*    Cadena de caracteres
+*    Secuencias
+*    Diccionarios
+*    Conjuntos
+#### Definidos por el usuario
+*    Clases
+
+Pueden crearse tipos donde uno incluya a otro, es decir, tener lo siguiente:
+
+```python
+fichas = ['negro', 'blanco']
+col_primarios = ['azul','amarillo','rojo']
+col_secundarios = ['verde','naranja']
+for numero in range(7):
+    fichas.append(numero)
+fichas.append(True)
+fichas.append(col_secundarios)
+print(fichas)
+```
+> **Salida: ['negro', 'blanco', 0, 1, 2, 3, 4, 5, 6, True, ['verde', 'naranja']]**
+
+Si bien el ejemplo plantea la versatilidad de un tipo de dato específico como lo son las listas, podemos notar que este no está definido por el usuario sino que su característica o extensibilidad nos permite almacenar en él cualquier otro tipo de dato. En contraposición a este caso las clases si son datos definidos por el usuario basándose en tipos de datos primitivos o estándares como los mencionados, aunque bien podrían contener datos pertenecientes a otras clases y así sucesivamente, pero en definitiva y en última instancia habrá un dato estándar. Las clases también nos brindan la posibilidad de realizar operaciones mediante la utilización de métodos, los cuales accediendo a sus datos realizan lo necesario por cada funcionalidad. Por ejemplo:
+
+```python
+class Persona:
+    def __init__(self, n, a, e):
+        self.nombre = n
+        self.apellido = a
+        self.edad = e
+     
+    def print_minombre(self):
+        print(self.nombre)
+         
+    def print_miedad(self):
+        print(self.edad)
+
+juan = Persona("Juan", "Perez", 23)
+juan.print_minombre()
+juan.print_miedad()
+```
+> **Salida: Juan 23**
+
+#### Processing
+
+Los tipos de datos se encuentran divididos en dos grandes categorías: primitivos y compuestos
+
+#### Primitivos
+*    Booleano
+*    Numéricos (enteros, flotantes, bytes, etc)
+#### Compuestos
+*    Arreglos
+*    Objetos
+*    Tablas
+*    Cadena de caracteres
+*    etc
+
+Al igual que Python y siendo Processing un framework basado principalmente en el lenguaje Java comparte muchas de sus características en cuanto a restricciones en las operaciones posibles que pueden aplicarse sobre cada tipo.
+Además de lo mencionado también se reconoce al lenguaje como de tipado fuerte y estático. Esta última característica es quizás una de las diferencias más notables sobre lenguajes como Python. Como ya hemos mencionado, que sea fuertemente tipado indica que es necesario declarar el tipo de dato para cada variable y en este lenguaje debe ser explícita esta declaración. Por ejemplo:
+
+```processing
+boolean puertaAbierta = false;
+```
+
+Como bien se sabe esta característica reserva en una porción de la memoria de datos un espacio de tamaño predeterminado por el tipo de dato declarado, además de mantener el identificador asociado al valor actual en el momento que se lo invoque (al instanciar la variable sin asignar valor, seguramente contenga “null”, “nil” o cualquier representación que indique “basura” dentro del programa)
+En el tipado estático la comprobación de los tipos se realiza al momento de la compilación, capacidad que difiere respecto a Python que realiza esto al momento de ejecución.
+
+Ejemplo de declaración de un objeto y un posible uso
+
+```processing
+HLine h1 = new HLine(20, 2.0); 
+HLine h2 = new HLine(50, 2.5); 
+ 
+void setup() 
+{
+  size(200, 200);
+  frameRate(30);
+}
+
+void draw() { 
+  background(204);
+  h1.update(); 
+  h2.update();  
+} 
+ 
+class HLine { 
+  float ypos, speed; 
+  HLine (float y, float s) {  
+    ypos = y; 
+    speed = s; 
+  } 
+  void update() { 
+    ypos += speed; 
+    if (ypos > height) { 
+      ypos = 0; 
+    } 
+    line(0, ypos, width, ypos); 
+  } 
+}
+```
+
+Podemos concluir que Python con su dinamismo en cuanto a tipado es más lento en ejecución ya que debe interpretar instrucción por instrucción para conocer las restricciones que se aplican a los elementos o variables implicadas en una sentencia, pero tiene como ventaja la velocidad de escritura por parte del programador ya que no necesita indicar los tipos a los que pertenecen sus datos. Por otra parte Processing lleva ventaja en el tiempo de ejecución final de un programa al realizar una sola compilación y luego ejecución de lo compilado (cuestión que trae aparejado el necesitar espacio adicional donde almacenar el código compilado) y es más restrictivo al tener que declarar por cada tipo a que clase de dato pertenece.
+
+**G. Enuncie las características más importantes del manejo de excepciones que presentan los lenguajes asignados
+
+Una excepción es un acontecimiento que ocurre durante la ejecución de un programa y que interrumpe el flujo normal de las instrucciones del programa. Algunos lenguajes no presentan mecanismos para el manejo de excepciones como Pascal, en estos casos se pueden simular este manejo de excepciones con otros recursos.
+Ejemplo de excepciones:
+  
+*  Abrir un archivo que no existe
+*  Acceder a una clave de un diccionario que no existe
+*  Invocar un método que no existe
+*  Dividir por cero
+
+#### Python
+
+* Manejo de excepciones
+
+```python
+try:
+  sentencia 1
+  ...
+  sentencia n
+except nombre-de-la-except-1:
+  sentencias
+except nombre-de-la-except-2:
+  sentencias
+else:
+  sentencias
+finally:
+  sentencias
+```
+Dentro de la cláusula **except** se pueden manejar varias excepciones *except(exp-1, exp-2)*. Las cláusulas **else** y **finally** son opcionales, si no aparece ninguna excepción para ser manejada se ejecuta el código dentro de la sección **else** y si existe declarado **finally** sea cual sea el flujo siempre se ejecutará el código dentro de esta cláusula.
+Es importante indagar sobre la forma de propagación que utilizan los lenguajes, es decir, qué sucede cuando no se encuentra un manejador para la excepción levantada, ¿dónde se busca quién maneje la excepción?. En Python primero se busca estáticamente, termina el bloque interno y busca en el bloque que lo contiene. Ejemplo:
+
+```python
+dic = {1: 'Mariano', 2: 'Juan', 3: 'pedro'}
+y = 0
+try:
+  try:
+    for x in range(1, 6):
+      print(dict[z])
+  except(KeyError):
+    dict[x] = "agregado"
+
+  y = y + 1
+  print("el valor de y es:" + str(y))
+
+except(NameError):
+  print("se esta usando una variable que no existe')
+
+print('se sigue con la siente sentencia del programa')
+```
+
+Este código produce un error de tipo **NameError** variable no definida que no es manejada por el bloque try interno pero **si es manejado** por el bloque try que lo contiene.
+En el siguiente ejemplo vamos a demostrar que Python aplica el mecanismo de terminación.
+
+```python 
+def elemento(x):
+  dic = {'art1': "mesa", 'art2': "silla", 'art4': "sillon"}
+  try:
+    return dict[x]
+  except NameError:
+    x = 'art1'
+
+elem = input('ingrese clave para acceder al diccionario:')
+try:
+  print("el valor del elemento : "+ str(elem) + "es: " + str(elemento(elem)))
+except KeyError:
+  print('ojo! : entro una clave inexistente. pruebe de nuevo!')
+```
+Ingresando una clave que no tiene el diccionario se produce un error dentro de la función **elemento** y al no manejarse allí la excepcion y al no encontrar un manejador para esa excepción bajo dinamicamente a quien lo llamó, i no se encuentra un manejador se aborta el programa en este caso particular.
+En Python también es posible levantar excepciones explícitamente. Ejemplo:
+
+```python
+try:
+  for x in range(1,6):
+    if x == 2 or x == 3:
+      raise KeyError
+    else:
+      print(dic[x])
+except(KeyError)
+  dict[x] = 'nuevo'
+```
+El programa controla que exista la clave y en caso contrario explícitamente levanta la excepción con la sentencia **raise**
+
+Excepciones predefinidas (Built-in Python)
+* EOFError: errores de EOF
+* ImportError: error con importaciones de módulos
+* IndexError: error por índice fuera de rango
+* KeyError: error por nombre no encontrado
+* SyntaxError: error por problemas sintácticos
+* ZeroDivisionError: error por división por cero
+
+También se pueden definir nuevas excepciones definiendo clases que deriven de **Exception**.
+
+#### Processing
+
+```processing
+try {
+  tryStatements
+} catch (exception) {
+  catchStatements
+}
+
+tryStatements si el codigo puede llegar a lanzar una excepcion, despues se ejecuta las líneas dentro de "catch"
+exception exception java que fue raiseada
+catchStatement código que maneja la excepción
+```
+
+**H. Conclusión sobre los lenguajes: Realice una entrevista a un usuario/s experimentado de los lenguajes asignados con el fin de obtener una opinión acerca del lenguaje respecto de los temas tratados en el trabajo. Esta conclusión no debe superar una carilla**
+
+COMPLETARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
+
+**I. Conclusión sobre el trabajo: Realice una conclusión mencionando los aportes que le generó la realización del trabajo en comparación con sus conocimientos previos de los lenguajes asignados**
+
+COMPLETARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
